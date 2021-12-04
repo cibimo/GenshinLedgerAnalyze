@@ -1,0 +1,19 @@
+<!DOCTYPE html>{% extends 'base.html' %}
+{% block htmlhead %}
+    <title>设置角色</title>
+{% endblock %}
+{% block htmlbody %}
+    <div class="container">
+        <br>
+        <h1>请选择此用户下的角色</h1>
+        <br>
+        {% for i in userList %}
+            <a href="/setUser?cookie={{ cookie }}&uid={{ i.game_uid }}&nickname={{ i.nickname }}&region={{ i.region }}&level={{ i.level }}" style="white-space:nowrap;color:#e00000;">
+                <small style="color:#0000e0;">{{ i.level }}级</small>
+                <strong>{{ i.nickname }}</strong>
+                <small style="color:grey;">uid:{{ i.game_uid }}</small>
+
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

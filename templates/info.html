@@ -1,0 +1,15 @@
+<!DOCTYPE html>{% extends 'base.html' %}
+{% block htmlhead %}
+    <title>信息</title>
+{% endblock %}
+{% block htmlbody %}
+<!--导航栏-->
+    <div class="container">
+        <br>
+        <div class="jumbotron">
+            <h1 class="display-4">{{title}}</h1>
+            <p class="lead">{{text}}</p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="{{redirect}}" role="button">返回</a></div>
+    </div>
+{% endblock %}

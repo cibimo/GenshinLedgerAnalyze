@@ -1,0 +1,45 @@
+<!DOCTYPE html>{% extends 'base.html' %}{% load static %}
+{% block htmlhead %}
+    <title>原神礼记可视化</title>
+{% endblock %}
+{% block htmlbody %}
+    <script src="{% static 'js/echarts.js' %}"></script>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>当前角色：{{ userInfo.nickname }}<small>[{{ userInfo.uid }}]</small></h5>
+            </div>
+
+            <div class="col-md-4">
+                <h5 style="text-align: right;"><a href="/setCookie">重设角色</a></h5>
+            </div>
+        </div>
+        <br>
+        <h2 style="text-align: center">原神礼记可视化</h2>
+        <br>
+        <h4><a href="/analyze?type=1">原石分析</a></h4>
+        {% if text1 %}
+            <h5>{{ text1 }}</h5>
+        {% else %}
+            <div id="main1" style="width: 100%; height: 300px;"></div>
+            <script>
+                var myChart1 = echarts.init(document.getElementById('main1'));
+                var option1 = {% autoescape off %}{{ option1 }}{% endautoescape %};
+                myChart1.setOption(option1);
+            </script>
+        {% endif %}
+        <br>
+        <h4><a href="/analyze?type=2">摩拉分析</a></h4>
+        {% if text2 %}
+            <h5>{{ text2 }}</h5>
+        {% else %}
+            <div id="main2" style="width: 100%; height: 300px;"></div>
+            <script>
+                var myChart2 = echarts.init(document.getElementById('main2'));
+                var option2 = {% autoescape off %}{{ option2 }}{% endautoescape %};
+                myChart2.setOption(option2);
+            </script>
+        {% endif %}
+    </div>
+{% endblock %}
